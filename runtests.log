@@ -1,0 +1,2226 @@
+starting build
+
+**********************************************************************
+
+Test build
+build xv6 using make
+
+**********************************************************************
+Trying to build project using make
+make xv6.img fs.img
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie -fno-pic -O -nostdinc -I. -c bootmain.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie -fno-pic -nostdinc -I. -c bootasm.S
+ld -m    elf_i386 -N -e start -Ttext 0x7C00 -o bootblock.o bootasm.o bootmain.o
+objdump -S bootblock.o > bootblock.asm
+objcopy -S -O binary -j .text bootblock.o bootblock
+./sign.pl bootblock
+boot block is 451 bytes (max 510)
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o bio.o bio.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o console.o console.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o exec.o exec.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o file.o file.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o fs.o fs.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o ide.o ide.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o ioapic.o ioapic.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o kalloc.o kalloc.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o kbd.o kbd.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o lapic.o lapic.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o log.o log.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o main.o main.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o mp.o mp.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o picirq.o picirq.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o pipe.o pipe.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o proc.o proc.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o sleeplock.o sleeplock.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o spinlock.o spinlock.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o string.o string.c
+gcc -m32 -gdwarf-2 -Wa,-divide   -c -o swtch.o swtch.S
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o syscall.o syscall.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o sysfile.o sysfile.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o sysproc.o sysproc.c
+gcc -m32 -gdwarf-2 -Wa,-divide   -c -o trapasm.o trapasm.S
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o trap.o trap.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o uart.o uart.c
+./vectors.pl > vectors.S
+gcc -m32 -gdwarf-2 -Wa,-divide   -c -o vectors.o vectors.S
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o vm.o vm.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o sys_wmap.o sys_wmap.c
+gcc -m32 -gdwarf-2 -Wa,-divide   -c -o entry.o entry.S
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie -fno-pic -nostdinc -I. -c entryother.S
+ld -m    elf_i386 -N -e start -Ttext 0x7000 -o bootblockother.o entryother.o
+objcopy -S -O binary -j .text bootblockother.o entryother
+objdump -S bootblockother.o > entryother.asm
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie -nostdinc -I. -c initcode.S
+ld -m    elf_i386 -N -e start -Ttext 0 -o initcode.out initcode.o
+objcopy -S -O binary initcode.out initcode
+objdump -S initcode.o > initcode.asm
+ld -m    elf_i386 -T kernel.ld -o kernel entry.o bio.o console.o exec.o file.o fs.o ide.o ioapic.o kalloc.o kbd.o lapic.o log.o main.o mp.o picirq.o pipe.o proc.o sleeplock.o spinlock.o string.o swtch.o syscall.o sysfile.o sysproc.o trapasm.o trap.o uart.o vectors.o vm.o sys_wmap.o  -b binary initcode entryother
+objdump -S kernel > kernel.asm
+objdump -t kernel | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > kernel.sym
+dd if=/dev/zero of=xv6.img count=10000
+10000+0 records in
+10000+0 records out
+5120000 bytes (5.1 MB, 4.9 MiB) copied, 0.0218071 s, 235 MB/s
+dd if=bootblock of=xv6.img conv=notrunc
+1+0 records in
+1+0 records out
+512 bytes copied, 0.000182614 s, 2.8 MB/s
+dd if=kernel of=xv6.img seek=1 conv=notrunc
+437+1 records in
+437+1 records out
+224080 bytes (224 kB, 219 KiB) copied, 0.00078261 s, 286 MB/s
+gcc -Werror -Wall -o mkfs mkfs.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o ulib.o ulib.c
+gcc -m32 -gdwarf-2 -Wa,-divide   -c -o usys.o usys.S
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o printf.o printf.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o umalloc.o umalloc.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o cat.o cat.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _cat cat.o ulib.o usys.o printf.o umalloc.o
+objdump -S _cat > cat.asm
+objdump -t _cat | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > cat.sym
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o echo.o echo.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _echo echo.o ulib.o usys.o printf.o umalloc.o
+objdump -S _echo > echo.asm
+objdump -t _echo | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > echo.sym
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o forktest.o forktest.c
+# forktest has less library code linked in - needs to be small
+# in order to be able to max out the proc table.
+ld -m    elf_i386 -N -e main -Ttext 0 -o _forktest forktest.o ulib.o usys.o
+objdump -S _forktest > forktest.asm
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o grep.o grep.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _grep grep.o ulib.o usys.o printf.o umalloc.o
+objdump -S _grep > grep.asm
+objdump -t _grep | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > grep.sym
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o init.o init.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _init init.o ulib.o usys.o printf.o umalloc.o
+objdump -S _init > init.asm
+objdump -t _init | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > init.sym
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o kill.o kill.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _kill kill.o ulib.o usys.o printf.o umalloc.o
+objdump -S _kill > kill.asm
+objdump -t _kill | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > kill.sym
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o ln.o ln.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _ln ln.o ulib.o usys.o printf.o umalloc.o
+objdump -S _ln > ln.asm
+objdump -t _ln | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > ln.sym
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o ls.o ls.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _ls ls.o ulib.o usys.o printf.o umalloc.o
+objdump -S _ls > ls.asm
+objdump -t _ls | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > ls.sym
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o mkdir.o mkdir.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _mkdir mkdir.o ulib.o usys.o printf.o umalloc.o
+objdump -S _mkdir > mkdir.asm
+objdump -t _mkdir | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > mkdir.sym
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o rm.o rm.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _rm rm.o ulib.o usys.o printf.o umalloc.o
+objdump -S _rm > rm.asm
+objdump -t _rm | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > rm.sym
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o sh.o sh.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _sh sh.o ulib.o usys.o printf.o umalloc.o
+objdump -S _sh > sh.asm
+objdump -t _sh | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > sh.sym
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o stressfs.o stressfs.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _stressfs stressfs.o ulib.o usys.o printf.o umalloc.o
+objdump -S _stressfs > stressfs.asm
+objdump -t _stressfs | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > stressfs.sym
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o usertests.o usertests.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _usertests usertests.o ulib.o usys.o printf.o umalloc.o
+objdump -S _usertests > usertests.asm
+objdump -t _usertests | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > usertests.sym
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o wc.o wc.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _wc wc.o ulib.o usys.o printf.o umalloc.o
+objdump -S _wc > wc.asm
+objdump -t _wc | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > wc.sym
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o zombie.o zombie.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _zombie zombie.o ulib.o usys.o printf.o umalloc.o
+objdump -S _zombie > zombie.asm
+objdump -t _zombie | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > zombie.sym
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o test.o test.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _test test.o ulib.o usys.o printf.o umalloc.o
+objdump -S _test > test.asm
+objdump -t _test | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > test.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 690 blocks have been allocated
+balloc: write bitmap block at sector 58
+
+
+test build PASSED
+ (build xv6 using make)
+
+starting test_1
+
+**********************************************************************
+
+Test test_1
+Checks the presence of all system calls
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/1_starter_tests/test_1.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 724 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_1
+`getpgdirinfo()` returned 0
+`wmap()` returned 1610612736
+`wunmap()` returned -1
+`getwmapinfo()` returned 0
+`wremap()` returned 0
+
+TEST_1	 SUCCESS
+
+test test_1 PASSED (1 of 1)
+ (Checks the presence of all system calls)
+
+starting test_2
+
+**********************************************************************
+
+Test test_2
+Validates the output of `getpgdirinfo()` before placing any mmap.
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/1_starter_tests/test_2.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 723 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_2
+getpgdirinfo 	Okay.
+
+WMMAP	 SUCCESS
+
+test test_2 PASSED (1 of 1)
+ (Validates the output of `getpgdirinfo()` before placing any mmap.)
+
+starting test_3
+
+**********************************************************************
+
+Test test_3
+Validates the output of `getwmapinfo()` before placing any mmap.
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/1_starter_tests/test_3.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 722 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_3
+Initially 0 maps. 	Okay.
+
+WMMAP	 SUCCESS
+
+test test_3 PASSED (1 of 1)
+ (Validates the output of `getwmapinfo()` before placing any mmap.)
+
+starting test_4
+
+**********************************************************************
+
+Test test_4
+Places one anonymous map at a fixed address.
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/2_wmap_tests/test_4.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 725 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_4
+Initially 0 maps. 	Okay.
+Map 1 at 0x60021000 with length 4104. 	Okay.
+
+WMMAP	 SUCCESS
+
+test test_4 PASSED (1 of 1)
+ (Places one anonymous map at a fixed address.)
+
+starting test_5
+
+**********************************************************************
+
+Test test_5
+Places one anonymous map at a NOT-fixed address.
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/2_wmap_tests/test_5.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 725 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_5
+Initially 0 maps. 	Okay.
+Map 1 at 0x60021000 with length 4104. 	Okay.
+
+WMMAP	 SUCCESS
+
+test test_5 PASSED (1 of 1)
+ (Places one anonymous map at a NOT-fixed address.)
+
+starting test_6
+
+**********************************************************************
+
+Test test_6
+Places one filebacked map at a fixed address.
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/2_wmap_tests/test_6.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 728 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk...
+xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_6
+Initially 0 maps. 	Okay.
+Map 1 at 0x60021000 with length 513. 	Okay.
+
+WMMAP	 SUCCESS
+
+test test_6 PASSED (1 of 1)
+ (Places one filebacked map at a fixed address.)
+
+starting test_7
+
+**********************************************************************
+
+Test test_7
+Places multiple maps at different addresses.
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/2_wmap_tests/test_7.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 732 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_7
+Initially 0 maps. 	Okay.
+Map 1 at 0x60021000 with length 513. 	Okay.
+Map 2 at 0x60022000 with length 8200. 	Okay.
+Map 3 did not exist. 	Okay.
+Map 4 at 0x60000000 with length 16392. 	Okay.
+Map 1, Map 2, Map 4 do not overlap with each other. 	Okay
+
+WMMAP	 SUCCESS
+
+test test_7 PASSED (1 of 1)
+ (Places multiple maps at different addresses.)
+
+starting test_8
+
+**********************************************************************
+
+Test test_8
+Places a large number of anonymous maps at fixed and non-fixed addresses
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/2_wmap_tests/test_8.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 729 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_8
+Maximum #allocatable pages: 131072
+Initially 0 maps. 	Okay.
+Map 1 is placed at 0x60021000. 	Okay.
+Map 2 is placed at 0x601B2000. 	Okay.
+Map 3 is placed at 0x60984000. 	Okay.
+Map 4 is placed at 0x61926000. 	Okay.
+Map 5 is placed at 0x63098000. 	Okay.
+Map 6 is placed at 0x64FDA000. 	Okay.
+Map 7 is placed at 0x676EC000. 	Okay.
+Map 8 is placed at 0x60000000. 	Okay.
+Map 9 is placed at 0x60002000. 	Okay.
+Map 10 is placed at 0x60004000. 	Okay.
+Map 1 ~ 10 do not overlap with each other. 	Okay
+Validated wmapinfo. 	Okay.
+
+WMMAP	 SUCCESS
+
+test test_8 PASSED (1 of 1)
+ (Places a large number of anonymous maps at fixed and non-fixed addresses)
+
+starting test_9
+
+**********************************************************************
+
+Test test_9
+access anonymous map (checks for memory allocation)
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/2_wmap_tests/test_9.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 731 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_9
+Initially 0 maps. 	Okay.
+Map 1 at 0x60002000 with length 8193. 	Okay.
+Accessed all pages of Map 1. 	Okay.
+
+WMMAP	 SUCCESS
+
+test test_9 PASSED (1 of 1)
+ (access anonymous map (checks for memory allocation))
+
+starting test_10
+
+**********************************************************************
+
+Test test_10
+access one big filebacked map (checks for memory allocation)
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/2_wmap_tests/test_10.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 735 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_10
+Initially 0 maps. 	Okay.
+Created file big.txt with length 20480. 	Okay.
+Placed map 1 at 0x60021000 with length 20480. 	Okay.
+Accessed all pages of Map 1. 	Okay.
+
+WMMAP	 SUCCESS
+
+test test_10 PASSED (1 of 1)
+ (access one big filebacked map (checks for memory allocation))
+
+starting test_11
+
+**********************************************************************
+
+Test test_11
+Places a large number of anonymous maps at fixed and non-fixed addresses and then accesses all pages of each map.
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/2_wmap_tests/test_11.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 731 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_11
+Maximum #allocatable pages: 131072
+Initially 0 maps. 	Okay.
+Map 1 is placed at 0x60021000. 	Okay.
+Map 2 is placed at 0x601B2000. 	Okay.
+Map 3 is placed at 0x60984000. 	Okay.
+Map 4 is placed at 0x61926000. 	Okay.
+Map 5 is placed at 0x63098000. 	Okay.
+Map 6 is placed at 0x64FDA000. 	Okay.
+Map 7 is placed at 0x676EC000. 	Okay.
+Map 8 is placed at 0x60000000. 	Okay.
+Map 9 is placed at 0x60002000. 	Okay.
+Map 10 is placed at 0x60004000. 	Okay.
+Map 1 ~ 10 do not overlap with each other. 	Okay
+Accessed all pages of Map 1 with length 1638408. 	Okay.
+Accessed all pages of Map 2 with length 8196104. 	Okay.
+Accessed all pages of Map 3 with length 16388112. 	Okay.
+Accessed all pages of Map 4 with length 24580120. 	Okay.
+Accessed all pages of Map 5 with length 32772128. 	Okay.
+Accessed all pages of Map 6 with length 40964136. 	Okay.
+Accessed all pages of Map 7 with length 49156144. 	Okay.
+Accessed all pages of Map 8 with length 4208. 	Okay.
+Accessed all pages of Map 9 with length 4224. 	Okay.
+Accessed all pages of Map 10 with length 4240. 	Okay.
+Accessed all pages of Map 1 ~ 10. 	Okay.
+Map 1 at 0x60021000 with length 1638408. 	Okay.
+Map 2 at 0x601B2000 with length 8196104. 	Okay.
+Map 3 at 0x60984000 with length 16388112. 	Okay.
+Map 4 at 0x61926000 with length 24580120. 	Okay.
+Map 5 at 0x63098000 with length 32772128. 	Okay.
+Map 6 at 0x64FDA000 with length 40964136. 	Okay.
+Map 7 at 0x676EC000 with length 49156144. 	Okay.
+Map 8 at 0x60000000 with length 4208. 	Okay.
+Map 9 at 0x60002000 with length 4224. 	Okay.
+Map 10 at 0x60004000 with length 4240. 	Okay.
+
+WMMAP	 SUCCESS
+
+test test_11 PASSED (1 of 1)
+ (Places a large number of anonymous maps at fixed and non-fixed addresses and then accesses all pages of each map.)
+
+starting test_12
+
+**********************************************************************
+
+Test test_12
+Checks for lazy allocation in fixed anon mapping
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/2_wmap_tests/test_12.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 734 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_12
+Initially 0 maps. 	Okay.
+Map placed at 0x60000000. 	Okay.
+No page allocated yet. 	Okay.
+No page have entry in pgdir yet. 	Okay.
+Read from the second page. 	Okay.
+Allocated 1 page. 	Okay.
+Allocated page have entry in pgdir. 	Okay.
+
+WMMAP	 SUCCESS
+
+test test_12 PASSED (1 of 1)
+ (Checks for lazy allocation in fixed anon mapping)
+
+starting test_13
+
+**********************************************************************
+
+Test test_13
+Checks for lazy allocation in fixed filebacked mapping
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/2_wmap_tests/test_13.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 736 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_13
+Initially 0 maps. 	Okay.
+
+
+TEST_13
+Created file big.txt with length 20480. 	Okay.
+Map placed at 0x60000000. 	Okay.
+No page allocated yet. 	Okay.
+No page have entry in pgdir yet. 	Okay.
+Read from the second page. 	Okay.
+Allocated 1 page. 	Okay.
+Allocated page have entry in pgdir. 	Okay.
+
+WMMAP	 SUCCESS
+
+test test_13 PASSED (1 of 1)
+ (Checks for lazy allocation in fixed filebacked mapping)
+
+starting test_14
+
+**********************************************************************
+
+Test test_14
+Places one anonymous map at a fixed address and unmaps it.
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/3_wunmap_tests/test_14.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 726 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_14
+Initially 0 maps. 	Okay.
+Map 1 at 0x60021000 with length 4104. 	Okay.
+Map 1 unmapped. 	Okay.
+
+WMMAP	 SUCCESS
+
+test test_14 PASSED (1 of 1)
+ (Places one anonymous map at a fixed address and unmaps it.)
+
+starting test_15
+
+**********************************************************************
+
+Test test_15
+Places one anonymous map at a NOT-fixed address and unmaps it.
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/3_wunmap_tests/test_15.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 726 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_15
+Initially 0 maps. 	Okay.
+Map 1 at 0x60021000 with length 4104. 	Okay.
+Map 1 unmapped. 	Okay.
+
+WMMAP	 SUCCESS
+
+test test_15 PASSED (1 of 1)
+ (Places one anonymous map at a NOT-fixed address and unmaps it.)
+
+starting test_16
+
+**********************************************************************
+
+Test test_16
+Places one filebacked map at a fixed address and unmaps it.
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/3_wunmap_tests/test_16.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 729 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_16
+Initially 0 maps. 	Okay.
+Map 1 at 0x60021000 with length 513. 	Okay.
+Map 1 unmapped. 	Okay.
+
+WMMAP	 SUCCESS
+
+test test_16 PASSED (1 of 1)
+ (Places one filebacked map at a fixed address and unmaps it.)
+
+starting test_17
+
+**********************************************************************
+
+Test test_17
+access anonymous map and unmap it
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/3_wunmap_tests/test_17.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 732 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_17
+Initially 0 maps. 	Okay.
+Map 1 at 0x60002000 with length 8193. 	Okay.
+Accessed all pages of Map 1. 	Okay.
+Map 1 unmapped. 	Okay.
+Unmapped pages are unallocated. 	Okay.
+
+WMMAP	 SUCCESS
+
+test test_17 PASSED (1 of 1)
+ (access anonymous map and unmap it)
+
+starting test_18
+
+**********************************************************************
+
+Test test_18
+access one big filebacked map (checks for memory allocation)
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/3_wunmap_tests/test_18.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 736 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_18
+Initially 0 maps. 	Okay.
+Created file big.txt with length 20480. 	Okay.
+Placed map 1 at 0x60021000 with length 20480. 	Okay.
+Accessed all pages of Map 1. 	Okay.
+Map 1 unmapped. 	Okay.
+Unmapped pages are unallocated. 	Okay.
+
+WMMAP	 SUCCESS
+
+
+test test_18 PASSED (1 of 1)
+ (access one big filebacked map (checks for memory allocation))
+
+starting test_19
+
+**********************************************************************
+
+Test test_19
+change one small private filebacked map (checks for memory allocation)
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/3_wunmap_tests/test_19.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 732 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_19
+Initially 0 maps. 	Okay.
+Created file small.txt with length 512. 	Okay.
+Placed map 1 at 0x60021000 with length 512. 	Okay.
+All pages of map 1 are as expected. 	Okay.
+Changed all pages of map 1 to 'p'. 	Okay.
+Unmapped map 1. 	Okay.
+File content is as expected. 	Okay.
+
+WMMAP	 SUCCESS
+
+test test_19 PASSED (1 of 1)
+ (change one small private filebacked map (checks for memory allocation))
+
+starting test_20
+
+**********************************************************************
+
+Test test_20
+change one big shared filebacked map (checks for memory allocation)
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/3_wunmap_tests/test_20.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 732 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_20
+Initially 0 maps. 	Okay.
+Created file big.txt with length 20480. 	Okay.
+Placed map 1 at 0x60021000 with length 20480. 	Okay.
+Unmapped map 1. 	Okay.
+File content is as expected. 	Okay.
+
+WMMAP	 SUCCESS
+
+test test_20 PASSED (1 of 1)
+ (change one big shared filebacked map (checks for memory allocation))
+
+starting test_21
+
+**********************************************************************
+
+Test test_21
+Validates mmaps exists in the mmap list in both parent and child for anonymous private and shared mappings with fork
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/4_fork_tests/test_21.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 727 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_21
+Map 1 created at 0x60000000 (length 0xA000). 	Okay.
+Map 2 created at 0x6000B000 (length 0xA00A). 	Okay.
+Child process starts
+Map 1 and 2 exist in the child process. 	Okay.
+Map 1 and 2 exist in the parent process. 	Okay
+
+WMMAP	 SUCCESS
+
+test test_21 PASSED (1 of 1)
+ (Validates mmaps exists in the mmap list in both parent and child for anonymous private and shared mappings with fork)
+
+starting test_22
+
+**********************************************************************
+
+Test test_22
+Validates parent can NOT see child's change for anonymous private mappings with fork
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/4_fork_tests/test_22.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 729 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_22
+PaChild process sees Map 1. 	Okay
+Child sees the same data as the parent in Map 1. 	Okay
+Child mrent waits for the child to exit
+odified the data in Map 1. 	Okay
+Parent process sees Map 1. 	Okay
+Parent sees the old data in Map 1. 	Okay
+
+WMMAP	 SUCCESS
+
+test test_22 PASSED (1 of 1)
+ (Validates parent can NOT see child's change for anonymous private mappings with fork)
+
+starting test_23
+
+**********************************************************************
+
+Test test_23
+Validates parent and child can NOT see eachothers change for anonymous private mappings with fork
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/4_fork_tests/test_23.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 730 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_23
+Map 1 created at 0x60000000 with length 40960. 	Okay
+Wrote 'a' to all pages of Map 1. 	Okay
+Parent process sees Map 1. 	Okay
+Parent modified the data to 'x' in Map 1. 	Okay
+Parent waits for theChild process sees Map 1. 	Okay
+ child to exit.
+Child waited for 200 ticks. 	Okay
+Child sees 'a' in Map 1. 	Okay
+Child modified the data to 'y' in Map 1. 	Okay
+Parent sees 'x' in Map 1. 	Okay
+
+WMMAP	 SUCCESS
+
+test test_23 PASSED (1 of 1)
+ (Validates parent and child can NOT see eachothers change for anonymous private mappings with fork)
+
+starting test_24
+
+**********************************************************************
+
+Test test_24
+Validates parent can NOT see child's change for filebacked private mappings with fork
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/4_fork_tests/test_24.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 730 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_24
+Map 1 created at 0x60000000 with length 512. 	Okay
+Map 1 has the same data ('a') as the file. 	Okay
+Child process starts
+Child sees 'a' in Map 1. 	Okay
+Child wrote 'g' in Map 1. 	Okay
+Parent sees 'a' (old data) in Map 1. 	Okay
+
+WMMAP	 SUCCESS
+
+test test_24 PASSED (1 of 1)
+ (Validates parent can NOT see child's change for filebacked private mappings with fork)
+
+starting test_25
+
+**********************************************************************
+
+Test test_25
+Validates parent can see child's change for anonymous shared mappings with fork
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/4_fork_tests/test_25.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 729 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_25
+Parent waits for the child to exit
+Child process sees Map 1. 	Okay
+Child sees the same data as the parent in Map 1. 	Okay
+Child modified the data in Map 1. 	Okay
+Parent process sees Map 1. 	Okay
+Parent sees the new data in Map 1. 	Okay
+
+WMMAP	 SUCCESS
+
+test test_25 PASSED (1 of 1)
+ (Validates parent can see child's change for anonymous shared mappings with fork)
+
+starting test_26
+
+**********************************************************************
+
+Test test_26
+Validates parent and child can see each others changes for anonymous shared mappings with fork
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/4_fork_tests/test_26.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 729 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_26
+Parent process sees Map 1. 	Okay
+Parent modified the data in Map 1. 	Okay
+Child process sees Map 1. 	Okay
+Child sees the parent-modified data in Map 1. 	Okay
+Child modified the data in Map 1. 	Okay
+Parent sees the child-modified data in Map 1. 	Okay
+
+WMMAP	 SUCCESS
+
+test test_26 PASSED (1 of 1)
+ (Validates parent and child can see each others changes for anonymous shared mappings with fork)
+
+starting test_27
+
+**********************************************************************
+
+Test test_27
+Validates child unmapping a private anon map does not affect the parent
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/4_fork_tests/test_27.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 729 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_27
+Map 1 created at 0x60000000 with length 40960. 	Okay
+Wrote 'a' all pages of Map 1. 	Okay
+Child sees Map 1. 	Okay
+Child sees 'a' in Map 1. 	Okay
+Child unmapped Map 1. 	Okay
+Parent sees Map 1. 	Okay
+Parent sees 'a' in Map 1. 	Okay
+
+WMMAP	 SUCCESS
+
+test test_27 PASSED (1 of 1)
+ (Validates child unmapping a private anon map does not affect the parent)
+
+starting test_28
+
+**********************************************************************
+
+Test test_28
+Validates child unmapping a shared anon map does not affect the parent
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/4_fork_tests/test_28.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 729 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_28
+Map 1 created at 0x60000000 with length 40960. 	Okay
+Wrote 'a' all pages of Map 1. 	Okay
+Child sees Map 1. 	Okay
+Child sees 'a' in Map 1. 	Okay
+Child unmapped Map 1. 	Okay
+Parent sees Map 1. 	Okay
+Cause: Parent sees 0 at Map 1, but expected 97
+
+WMMAP	 FAILED
+
+test test_28 FAILED (0 of 1)
+ (Validates child unmapping a shared anon map does not affect the parent)
+ tester failed
+
+starting test_29
+
+**********************************************************************
+
+Test test_29
+Remaps an anonymous mapping (grow, but does not need to move)
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/5_wremap_tests/test_29.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 728 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_29
+Map 1 created at 0x60021000 (length 0xA000). 	Okay
+Map 1 grown to 0x60021000 (length 0xF000). 	Okay
+Map 1 grown to 0x60021000 (length 0x11000). 	Okay
+
+WMMAP	 SUCCESS
+
+test test_29 PASSED (1 of 1)
+ (Remaps an anonymous mapping (grow, but does not need to move))
+
+starting test_30
+
+**********************************************************************
+
+Test test_30
+Remaps an anonymous mapping (shrink twice)
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/5_wremap_tests/test_30.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 729 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_30
+Map 1 placed at 0x60021000. 	Okay
+Map 1 shrunk to 0x60021000 (length 0x8000). 	Okay
+Map 1 shrunk to 0x60021000 (length 0x6000). 	Okay
+
+WMMAP	 SUCCESS
+
+test test_30 PASSED (1 of 1)
+ (Remaps an anonymous mapping (shrink twice))
+
+starting test_31
+
+**********************************************************************
+
+Test test_31
+Remaps an anonymous mapping that needs to be moved
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/5_wremap_tests/test_31.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 728 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_31
+Map 1 placed at 0x6000A000 (length 0xA000)
+Map 2 placed at 0x60000000 (length 0xA000)
+Validated two maps. 	Okay
+Map 2 failed to move as the dont_move flag was set. 	Okay
+Map 2 moved to 0x6000A000 (length 0xC000). 	Okay
+
+WMMAP	 SUCCESS
+
+
+test test_31 PASSED (1 of 1)
+ (Remaps an anonymous mapping that needs to be moved)
+
+starting test_32
+
+**********************************************************************
+
+Test test_32
+Validates memory access in a map that is shrinked
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/5_wremap_tests/test_32.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 732 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_32
+Map 1 placed at 0x60002000 (length 0x5000)
+Wrote 'y' at the first three pages of Map 1. 	Okay
+Map 1 shrunk to 0x60002000 (length 0x1000)
+Validated the page contents to be intact after remap. 	Okay
+Validated the old VA does not exist in the user pages. 	Okay
+
+WMMAP	 SUCCESS
+
+test test_32 PASSED (1 of 1)
+ (Validates memory access in a map that is shrinked)
+
+starting test_33
+
+**********************************************************************
+
+Test test_33
+Validates memory access in a map that moved due to remap
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/5_wremap_tests/test_33.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 733 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_33
+Map 1 placed at 0x60004000 (length 0x4000)
+Map 2 placed at 0x60000000 (length 0x4000)
+Validated two maps. 	Okay
+Wrote 'y' at the second and third pages of Map 2. 	Okay
+Map 2 moved. 	Okay
+	Cause:	Arr2[4096] = Map2[1000] = 0. Should be 121
+
+WMMAP	 FAILED
+
+test test_33 FAILED (0 of 1)
+ (Validates memory access in a map that moved due to remap)
+ tester failed
+
+starting test_34
+
+**********************************************************************
+
+Test test_34
+Shrinks an anonymous map and then unmaps it
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/5_wremap_tests/test_34.c
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 731 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_34
+Map 1 placed at 0x60021000. 	Okay
+Map 1 shrunk to 0x60021000 (length 0x3000). 	Okay
+Map 1 shrunk to 0x60021000 (length 0x1000). 	Okay
+Map 1 unmapped. 	Okay
+
+WMMAP	 SUCCESS
+
+test test_34 PASSED (1 of 1)
+ (Shrinks an anonymous map and then unmaps it)
+
+starting test_35
+
+**********************************************************************
+
+Test test_35
+Remaps an anonymous mapping that requires moving and unmaps it
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/5_wremap_tests/test_35.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 734 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_35
+Map 1 placed at 0x60003000 (length 0x3000)
+Map 2 placed at 0x60000000 (length 0x3000)
+Validated two maps. 	Okay
+Map 2 moved to 0x60003000 (length 0x4000). 	Okay
+Validated the old VA does not exist in the user pages. 	Okay
+Cause: expected Virt.Addr. 0x60003000 to exist in the list of user pages
+
+WMMAP	 FAILED
+
+test test_35 FAILED (0 of 1)
+ (Remaps an anonymous mapping that requires moving and unmaps it)
+ tester failed
+
+starting test_36
+
+**********************************************************************
+
+Test test_36
+Remap an file-backed mapping
+
+**********************************************************************
+Running xv6 user progam /home/cs537-1/tests/P4/5_wremap_tests/test_36.c
+DEBUG: cmd = ['/home/cs537-1/tests/P4/edit-makefile.sh', '/tmp/tmpquxzgtf4/p/Makefile', '/tmp/tmpquxzgtf4/p/Makefile.test']
+Trying to build project using make
+make xv6.img fs.img
+/tmp/tmpquxzgtf4/p/Makefile
+/tmp/tmpquxzgtf4/p/Makefile.test
+make: 'xv6.img' is up to date.
+make: 'fs.img' is up to date.
+make qemu-nox CPUS=1
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o tester.o tester.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _tester tester.o ulib.o usys.o printf.o umalloc.o
+objdump -S _tester > tester.asm
+objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
+./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _test 
+nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
+balloc: first 740 blocks have been allocated
+balloc: write bitmap block at sector 58
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8B4A0+1FECB4A0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ tester
+tester
+
+
+TEST_36
+Initially 0 maps. 	Okay.
+Created file big1.txt with length 12288. 	Okay.
+Map 1 placed at 0x60003000 (length 0x3000). 	Okay
+File Contents are intact in Map 1. 	Okay
+Map 1 exists. 	Okay
+Map 1 shrunk to 0x60003000. 	Okay
+Created file big2.txt with length 12288. 	Okay.
+Map 2 placed at 0x60000000 (length 0x2000). 	Okay
+Wrote to Map 2. 	Okay
+Map 2 exists. 	Okay
+Map 2 moved to 0x60003000. 	Okay
+Cause: expected Virt.Addr. 0x60004000 to exist in the list of user pages
+
+WMMAP	 FAILED
+
+test test_36 FAILED (0 of 1)
+ (Remap an file-backed mapping)
+ tester failed
+
+**********************************************************************
+Summary:
+test build PASSED
+ (build xv6 using make)
+
+test test_1 PASSED (1 of 1)
+ (Checks the presence of all system calls)
+
+test test_2 PASSED (1 of 1)
+ (Validates the output of `getpgdirinfo()` before placing any mmap.)
+
+test test_3 PASSED (1 of 1)
+ (Validates the output of `getwmapinfo()` before placing any mmap.)
+
+test test_4 PASSED (1 of 1)
+ (Places one anonymous map at a fixed address.)
+
+test test_5 PASSED (1 of 1)
+ (Places one anonymous map at a NOT-fixed address.)
+
+test test_6 PASSED (1 of 1)
+ (Places one filebacked map at a fixed address.)
+
+test test_7 PASSED (1 of 1)
+ (Places multiple maps at different addresses.)
+
+test test_8 PASSED (1 of 1)
+ (Places a large number of anonymous maps at fixed and non-fixed addresses)
+
+test test_9 PASSED (1 of 1)
+ (access anonymous map (checks for memory allocation))
+
+test test_10 PASSED (1 of 1)
+ (access one big filebacked map (checks for memory allocation))
+
+test test_11 PASSED (1 of 1)
+ (Places a large number of anonymous maps at fixed and non-fixed addresses and then accesses all pages of each map.)
+
+test test_12 PASSED (1 of 1)
+ (Checks for lazy allocation in fixed anon mapping)
+
+test test_13 PASSED (1 of 1)
+ (Checks for lazy allocation in fixed filebacked mapping)
+
+test test_14 PASSED (1 of 1)
+ (Places one anonymous map at a fixed address and unmaps it.)
+
+test test_15 PASSED (1 of 1)
+ (Places one anonymous map at a NOT-fixed address and unmaps it.)
+
+test test_16 PASSED (1 of 1)
+ (Places one filebacked map at a fixed address and unmaps it.)
+
+test test_17 PASSED (1 of 1)
+ (access anonymous map and unmap it)
+
+test test_18 PASSED (1 of 1)
+ (access one big filebacked map (checks for memory allocation))
+
+test test_19 PASSED (1 of 1)
+ (change one small private filebacked map (checks for memory allocation))
+
+test test_20 PASSED (1 of 1)
+ (change one big shared filebacked map (checks for memory allocation))
+
+test test_21 PASSED (1 of 1)
+ (Validates mmaps exists in the mmap list in both parent and child for anonymous private and shared mappings with fork)
+
+test test_22 PASSED (1 of 1)
+ (Validates parent can NOT see child's change for anonymous private mappings with fork)
+
+test test_23 PASSED (1 of 1)
+ (Validates parent and child can NOT see eachothers change for anonymous private mappings with fork)
+
+test test_24 PASSED (1 of 1)
+ (Validates parent can NOT see child's change for filebacked private mappings with fork)
+
+test test_25 PASSED (1 of 1)
+ (Validates parent can see child's change for anonymous shared mappings with fork)
+
+test test_26 PASSED (1 of 1)
+ (Validates parent and child can see each others changes for anonymous shared mappings with fork)
+
+test test_27 PASSED (1 of 1)
+ (Validates child unmapping a private anon map does not affect the parent)
+
+test test_28 FAILED (0 of 1)
+ (Validates child unmapping a shared anon map does not affect the parent)
+ tester failed
+
+test test_29 PASSED (1 of 1)
+ (Remaps an anonymous mapping (grow, but does not need to move))
+
+test test_30 PASSED (1 of 1)
+ (Remaps an anonymous mapping (shrink twice))
+
+test test_31 PASSED (1 of 1)
+ (Remaps an anonymous mapping that needs to be moved)
+
+test test_32 PASSED (1 of 1)
+ (Validates memory access in a map that is shrinked)
+
+test test_33 FAILED (0 of 1)
+ (Validates memory access in a map that moved due to remap)
+ tester failed
+
+test test_34 PASSED (1 of 1)
+ (Shrinks an anonymous map and then unmaps it)
+
+test test_35 FAILED (0 of 1)
+ (Remaps an anonymous mapping that requires moving and unmaps it)
+ tester failed
+
+test test_36 FAILED (0 of 1)
+ (Remap an file-backed mapping)
+ tester failed
+
+Passed 33 of 37 tests.
+Overall 33 of 37
+Points 32 of 36
